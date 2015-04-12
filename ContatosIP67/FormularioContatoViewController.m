@@ -8,12 +8,21 @@
 
 #import "FormularioContatoViewController.h"
 #import "Contato.h"
+#import "ContatoDAO.h"
 
 @interface FormularioContatoViewController ()
 
 @end
 
 @implementation FormularioContatoViewController
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        self.dao = [ContatoDAO contatoDaoInstance];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +48,9 @@
     contato.endereco = endereco;
     contato.site = site;
     
-    NSLog(@"%@", contato);
+    //NSLog(@"Contato: %@", contato);
+    [self.dao adicionaContato:contato];
+    
 }
 
 @end

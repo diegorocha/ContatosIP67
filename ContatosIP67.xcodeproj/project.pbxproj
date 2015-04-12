@@ -16,6 +16,7 @@
 		9DD6DC471AD98D9D00160E8C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD6DC451AD98D9D00160E8C /* LaunchScreen.xib */; };
 		9DD6DC531AD98D9D00160E8C /* ContatosIP67Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6DC521AD98D9D00160E8C /* ContatosIP67Tests.m */; };
 		9DD6DC5E1AD9959300160E8C /* Contato.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6DC5D1AD9959300160E8C /* Contato.m */; };
+		9DD6DC611AD9ACBE00160E8C /* ContatoDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6DC601AD9ACBE00160E8C /* ContatoDAO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		9DD6DC521AD98D9D00160E8C /* ContatosIP67Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContatosIP67Tests.m; sourceTree = "<group>"; };
 		9DD6DC5C1AD9959300160E8C /* Contato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contato.h; sourceTree = "<group>"; };
 		9DD6DC5D1AD9959300160E8C /* Contato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contato.m; sourceTree = "<group>"; };
+		9DD6DC5F1AD9ACBE00160E8C /* ContatoDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContatoDAO.h; sourceTree = "<group>"; };
+		9DD6DC601AD9ACBE00160E8C /* ContatoDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContatoDAO.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				9DD6DC381AD98D9D00160E8C /* AppDelegate.m */,
 				9DD6DC3D1AD98D9D00160E8C /* FormularioContatoViewController.h */,
 				9DD6DC3E1AD98D9D00160E8C /* FormularioContatoViewController.m */,
+				9DD6DC5F1AD9ACBE00160E8C /* ContatoDAO.h */,
+				9DD6DC601AD9ACBE00160E8C /* ContatoDAO.m */,
 				9DD6DC401AD98D9D00160E8C /* Main.storyboard */,
 				9DD6DC5C1AD9959300160E8C /* Contato.h */,
 				9DD6DC5D1AD9959300160E8C /* Contato.m */,
@@ -230,6 +235,7 @@
 				9DD6DC5E1AD9959300160E8C /* Contato.m in Sources */,
 				9DD6DC391AD98D9D00160E8C /* AppDelegate.m in Sources */,
 				9DD6DC3C1AD98D9D00160E8C /* ContatosIP67.xcdatamodeld in Sources */,
+				9DD6DC611AD9ACBE00160E8C /* ContatoDAO.m in Sources */,
 				9DD6DC3F1AD98D9D00160E8C /* FormularioContatoViewController.m in Sources */,
 				9DD6DC361AD98D9D00160E8C /* main.m in Sources */,
 			);
