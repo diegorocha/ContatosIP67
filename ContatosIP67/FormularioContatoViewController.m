@@ -20,18 +20,14 @@
     self = [super initWithCoder:aDecoder];
     if(self){
         self.dao = [ContatoDAO contatoDaoInstance];
+        self.navigationItem.title = @"Cadastro";
+        
+        UIBarButtonItem *adiciona = [[UIBarButtonItem alloc]initWithTitle:@"Adiciona" style:UIBarButtonItemStylePlain target:self action:@selector(criaContato)];
+        self.navigationItem.rightBarButtonItem = adiciona;
+        self.botaoFoto.layer.borderColor = [UIColor grayColor].CGColor;
+        self.botaoFoto.layer.borderWidth = 0.8;
     }
     return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)pegaDadosDoFormulario{
@@ -41,16 +37,76 @@
     NSString *endereco = [self.endereco text];
     NSString *site = [self.site text];
     
-    Contato *contato = [Contato new];
-    contato.nome = nome;
-    contato.telefone = telefone;
-    contato.email = email;
-    contato.endereco = endereco;
-    contato.site = site;
+    if(!self.contato){
+        self.contato = [Contato new];
+    }
     
-    //NSLog(@"Contato: %@", contato);
-    [self.dao adicionaContato:contato];
+    self.contato.nome = nome;
+    self.contato.telefone = telefone;
+    self.contato.email = email;
+    self.contato.endereco = endereco;
+    self.contato.site = site;
     
+    UIImage *backgroundBotao = [self.botaoFoto backgroundImageForState:UIControlStateNormal];
+    if(backgroundBotao){
+        self.contato.foto = backgroundBotao;
+    }
+    
+    NSLog(@"%@", self.contato);
+}
+
+-(void) atualizaContato {
+    [self pegaDadosDoFormulario];
+    if(self.delegate){
+        [self.delegate contatoAdicionado:self.contato];
+    }
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void)criaContato{
+    [self pegaDadosDoFormulario];
+    [self.dao adicionaContato:self.contato];
+    if(self.delegate){
+        [self.delegate contatoAdicionado:self.contato];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)viewDidLoad {
+    if(self.contato){
+        self.navigationItem.title = @"Alterar";
+        UIBarButtonItem *confirmar = [[UIBarButtonItem alloc] initWithTitle:@"Confirmar" style:UIBarButtonItemStylePlain target:self action:@selector(atualizaContato)];
+        self.navigationItem.rightBarButtonItem = confirmar;
+        
+        self.nome.text = self.contato.nome;
+        self.telefone.text = self.contato.telefone;
+        self.email.text = self.contato.email;
+        self.endereco.text = self.contato.endereco;
+        self.site.text = self.contato.site;
+        if(self.contato.foto){
+            [self.botaoFoto setBackgroundImage:self.contato.foto forState:UIControlStateNormal];
+            [self.botaoFoto setTitle:nil forState:UIControlStateNormal];
+        }
+    }
+}
+
+-(IBAction)selecionaFoto:(id)sender{
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        //Camera
+    }else{
+        UIImagePickerController *picker = [UIImagePickerController new];
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *imagemSelecionada = [info valueForKey:UIImagePickerControllerEditedImage];
+    [self.botaoFoto setBackgroundImage:imagemSelecionada forState:UIControlStateNormal];
+    [self.botaoFoto setTitle:nil forState:UIControlStateNormal];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

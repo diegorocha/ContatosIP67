@@ -12,7 +12,7 @@
 
 static ContatoDAO *defaultDao = nil;
 
--(id)init{
+- (id)init{
     self = [super init];
     if(self){
         _contatos = [NSMutableArray new];
@@ -20,15 +20,27 @@ static ContatoDAO *defaultDao = nil;
     return self;
 }
 
-+(id) contatoDaoInstance{
++ (id) contatoDaoInstance{
     if(!defaultDao){
         defaultDao = [ContatoDAO new];
     }
     return defaultDao;
 }
 
--(void)adicionaContato:(Contato *)contato{
+- (void)adicionaContato:(Contato *)contato{
     [self.contatos addObject:contato];
+}
+
+- (Contato *)buscaContatoDaPosicao:(NSInteger)posicao {
+    return self.contatos[posicao];
+}
+
+-(NSInteger) buscaPosicaoDoContato:(Contato *)contato {
+    return [self.contatos indexOfObject: contato];
+}
+
+- (void)removeContatoDaPosicao: (NSInteger)posicao {
+    [self.contatos removeObjectAtIndex:posicao];
 }
 
 @end
