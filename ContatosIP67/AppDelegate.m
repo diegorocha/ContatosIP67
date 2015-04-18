@@ -20,7 +20,10 @@
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     
     ListaContatosViewController *lista = [ListaContatosViewController new];
-    self.window.rootViewController = lista;
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lista];
+    
+    self.window.rootViewController = nav;
     
     [self.window makeKeyAndVisible];
     return YES;
