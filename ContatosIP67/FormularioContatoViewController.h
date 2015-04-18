@@ -17,10 +17,9 @@
 @property IBOutlet UITextField *endereco;
 @property IBOutlet UITextField *site;
 
+@property (strong) Contato *contato;
+
 @property ContatoDAO *dao;
-
-
--(IBAction)pegaDadosDoFormulario;
 
 @end
 

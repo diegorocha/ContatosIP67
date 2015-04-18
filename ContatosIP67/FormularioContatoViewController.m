@@ -20,6 +20,10 @@
     self = [super initWithCoder:aDecoder];
     if(self){
         self.dao = [ContatoDAO contatoDaoInstance];
+        self.navigationItem.title = @"Cadastro";
+        
+        UIBarButtonItem *adiciona = [[UIBarButtonItem alloc]initWithTitle:@"Adiciona" style:UIBarButtonItemStylePlain target:self action:@selector(criaContato)];
+        self.navigationItem.rightBarButtonItem = adiciona;
     }
     return self;
 }
@@ -41,16 +45,21 @@
     NSString *endereco = [self.endereco text];
     NSString *site = [self.site text];
     
-    Contato *contato = [Contato new];
-    contato.nome = nome;
-    contato.telefone = telefone;
-    contato.email = email;
-    contato.endereco = endereco;
-    contato.site = site;
+    self.contato = [Contato new];
+    self.contato.nome = nome;
+    self.contato.telefone = telefone;
+    self.contato.email = email;
+    self.contato.endereco = endereco;
+    self.contato.site = site;
     
-    //NSLog(@"Contato: %@", contato);
-    [self.dao adicionaContato:contato];
+    NSLog(@"%@", self.contato);
+}
+
+-(void)criaContato{
+    [self pegaDadosDoFormulario];
+    [self.dao adicionaContato:self.contato];
     
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

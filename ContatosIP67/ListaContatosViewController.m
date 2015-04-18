@@ -7,7 +7,7 @@
 //
 
 #import "ListaContatosViewController.h"
-
+#import "FormularioContatoViewController.h"
 @implementation ListaContatosViewController
 
 
@@ -23,9 +23,14 @@
 }
 
 -(void)exibeFormulario {
-    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Alerta" message:@"Aqui vamos exibir o formulário" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alert show];
-    NSLog(@"Aqui vamos exibir o formulário");
+    //UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Alerta" message:@"Aqui vamos exibir o formulário" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    //[alert show];
+    //NSLog(@"Aqui vamos exibir o formulário");
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FormularioContatoViewController *form = [storyboard instantiateViewControllerWithIdentifier:@"Form-Contato"];
+    [self.navigationController pushViewController:form animated:YES];
 }
 
 @end
