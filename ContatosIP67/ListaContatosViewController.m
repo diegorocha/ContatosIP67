@@ -21,9 +21,10 @@
     }
     return self;
 }
- 
+
 -(void)exibeFormulario {
-    //[UIAlertController alertControllerWithTitle:@"Alerta" message:@"Aqui vamos exibir o formulário" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Alerta" message:@"Aqui vamos exibir o formulário" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [alert show];
     NSLog(@"Aqui vamos exibir o formulário");
 }
 
