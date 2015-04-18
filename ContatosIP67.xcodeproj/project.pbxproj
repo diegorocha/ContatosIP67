@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D5828E61AE2A1790066E4CC /* ListaContatosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5828E51AE2A1790066E4CC /* ListaContatosViewController.m */; };
+		9D5828E91AE2D63F0066E4CC /* TesteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5828E81AE2D63F0066E4CC /* TesteTableViewController.m */; };
 		9DD6DC361AD98D9D00160E8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6DC351AD98D9D00160E8C /* main.m */; };
 		9DD6DC391AD98D9D00160E8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6DC381AD98D9D00160E8C /* AppDelegate.m */; };
 		9DD6DC3C1AD98D9D00160E8C /* ContatosIP67.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6DC3A1AD98D9D00160E8C /* ContatosIP67.xcdatamodeld */; };
@@ -33,6 +34,8 @@
 /* Begin PBXFileReference section */
 		9D5828E41AE2A1790066E4CC /* ListaContatosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaContatosViewController.h; sourceTree = "<group>"; };
 		9D5828E51AE2A1790066E4CC /* ListaContatosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaContatosViewController.m; sourceTree = "<group>"; };
+		9D5828E71AE2D63F0066E4CC /* TesteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TesteTableViewController.h; sourceTree = "<group>"; };
+		9D5828E81AE2D63F0066E4CC /* TesteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TesteTableViewController.m; sourceTree = "<group>"; };
 		9DD6DC301AD98D9D00160E8C /* ContatosIP67.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContatosIP67.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD6DC341AD98D9D00160E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DD6DC351AD98D9D00160E8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				9DD6DC331AD98D9D00160E8C /* Supporting Files */,
 				9D5828E41AE2A1790066E4CC /* ListaContatosViewController.h */,
 				9D5828E51AE2A1790066E4CC /* ListaContatosViewController.m */,
+				9D5828E71AE2D63F0066E4CC /* TesteTableViewController.h */,
+				9D5828E81AE2D63F0066E4CC /* TesteTableViewController.m */,
 			);
 			path = ContatosIP67;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DD6DC5E1AD9959300160E8C /* Contato.m in Sources */,
+				9D5828E91AE2D63F0066E4CC /* TesteTableViewController.m in Sources */,
 				9DD6DC391AD98D9D00160E8C /* AppDelegate.m in Sources */,
 				9D5828E61AE2A1790066E4CC /* ListaContatosViewController.m in Sources */,
 				9DD6DC3C1AD98D9D00160E8C /* ContatosIP67.xcdatamodeld in Sources */,
