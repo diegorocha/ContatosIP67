@@ -27,7 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    MKUserTrackingBarButtonItem *botaoLocalizacao = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapa];
+    self.navigationItem.rightBarButtonItem = botaoLocalizacao;
+    self.manager = [CLLocationManager new];
+    [self.manager requestWhenInUseAuthorization];
 }
 
 - (void)didReceiveMemoryWarning {
