@@ -27,11 +27,7 @@
     return self;
 }
 
-- (void)exibeFormulario {
-    //UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Alerta" message:@"Aqui vamos exibir o formulário" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //[alert show];
-    //NSLog(@"Aqui vamos exibir o formulário");
-    
+- (void)exibeFormulario {    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     FormularioContatoViewController *form = [storyboard instantiateViewControllerWithIdentifier:@"Form-Contato"];
     form.delegate = self;

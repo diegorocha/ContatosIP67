@@ -24,13 +24,10 @@
         
         UIBarButtonItem *adiciona = [[UIBarButtonItem alloc]initWithTitle:@"Adiciona" style:UIBarButtonItemStylePlain target:self action:@selector(criaContato)];
         self.navigationItem.rightBarButtonItem = adiciona;
+        self.botaoFoto.layer.borderColor = [UIColor grayColor].CGColor;
+        self.botaoFoto.layer.borderWidth = 0.8;
     }
     return self;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)pegaDadosDoFormulario{
@@ -49,6 +46,11 @@
     self.contato.email = email;
     self.contato.endereco = endereco;
     self.contato.site = site;
+    
+    UIImage *backgroundBotao = [self.botaoFoto backgroundImageForState:UIControlStateNormal];
+    if(backgroundBotao){
+        self.contato.foto = backgroundBotao;
+    }
     
     NSLog(@"%@", self.contato);
 }
@@ -81,6 +83,10 @@
         self.email.text = self.contato.email;
         self.endereco.text = self.contato.endereco;
         self.site.text = self.contato.site;
+        if(self.contato.foto){
+            [self.botaoFoto setBackgroundImage:self.contato.foto forState:UIControlStateNormal];
+            [self.botaoFoto setTitle:nil forState:UIControlStateNormal];
+        }
     }
 }
 
