@@ -9,17 +9,28 @@
 #import <UIKit/UIKit.h>
 #import "ContatoDAO.h"
 
-@interface FormularioContatoViewController : UIViewController
+@protocol FormularioContatoViewControllerDelegate <NSObject>
+
+-(void)contatoAtualizado:(Contato *)contato;
+-(void)contatoAdicionado:(Contato *)contato;
+
+@end
+
+@interface FormularioContatoViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property IBOutlet UITextField *nome;
 @property IBOutlet UITextField *telefone;
 @property IBOutlet UITextField *email;
 @property IBOutlet UITextField *endereco;
 @property IBOutlet UITextField *site;
+@property IBOutlet UIButton *botaoFoto;
 
 @property (strong) Contato *contato;
 
 @property ContatoDAO *dao;
+@property(weak) id<FormularioContatoViewControllerDelegate> delegate;
+
+-(IBAction)selecionaFoto:(id)sender;
 
 @end
 

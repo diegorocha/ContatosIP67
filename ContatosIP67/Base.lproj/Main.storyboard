@@ -7,7 +7,6 @@
         <!--Formulario Contato View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Form-Contato" id="vXZ-lx-hvc" customClass="FormularioContatoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
@@ -48,12 +47,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qEa-qC-uDZ">
-                                <rect key="frame" x="100" y="77" width="259" height="30"/>
+                                <rect key="frame" x="100" y="77" width="156" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTT-O8-NUe">
-                                <rect key="frame" x="100" y="115" width="259" height="30"/>
+                                <rect key="frame" x="100" y="115" width="156" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
@@ -72,11 +71,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mag-ER-Knq">
+                                <rect key="frame" x="274" y="73" width="74" height="74"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Foto"/>
+                                <connections>
+                                    <action selector="selecionaFoto:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rMV-0A-KfF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="botaoFoto" destination="Mag-ER-Knq" id="tEZ-6C-gsF"/>
                         <outlet property="email" destination="k9d-b1-qNG" id="COx-gP-2dQ"/>
                         <outlet property="endereco" destination="69h-mc-KfS" id="lF6-m8-Kqe"/>
                         <outlet property="nome" destination="qEa-qC-uDZ" id="Me6-g1-66B"/>
@@ -84,6 +92,7 @@
                         <outlet property="telefone" destination="aTT-O8-NUe" id="SPq-hE-LTp"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="422.5" y="279.5"/>
         </scene>

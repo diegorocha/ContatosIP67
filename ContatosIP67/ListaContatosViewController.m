@@ -17,6 +17,7 @@
     self = [super init];
     if(self){
         self.navigationItem.title = @"Contatos";
+        self.linhaDestaque = -1;
         
         UIBarButtonItem *botaoExibirFormulario = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(exibeFormulario)];
         self.navigationItem.rightBarButtonItem = botaoExibirFormulario;
@@ -33,6 +34,10 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     FormularioContatoViewController *form = [storyboard instantiateViewControllerWithIdentifier:@"Form-Contato"];
+    form.delegate = self;
+    if(self.contatoSelecionado){
+        form.contato = self.contatoSelecionado;
+    }
     [self.navigationController pushViewController:form animated:YES];
 }
 
@@ -64,5 +69,53 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
+
+-(void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.contatoSelecionado = [self.dao buscaContatoDaPosicao:indexPath.row];
+    [self exibeFormulario];
+    self.contatoSelecionado = nil;
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
+
+
+-(void)contatoAtualizado:(Contato *)contato{
+    self.linhaDestaque = [self.dao buscaPosicaoDoContato:contato];
+}
+
+-(void)contatoAdicionado:(Contato *)contato{
+    self.linhaDestaque = [self.dao buscaPosicaoDoContato:contato];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    if(self.linhaDestaque >= 0){
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.linhaDestaque inSection:0];
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        self.linhaDestaque = 1;
+    }
+}
+
+-(void) viewDidLoad{
+    [super viewDidLoad];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(exibeMaisAcoes:)];
+    [self.tableView addGestureRecognizer:longPress];
+}
+
+-(void) exibeMaisAcoes:(UIGestureRecognizer *)gesture{
+    if(gesture.state == UIGestureRecognizerStateBegan){
+        CGPoint ponto = [gesture locationInView:self.tableView];
+        NSIndexPath *index = [self.tableView indexPathForRowAtPoint:ponto];
+        if(index){
+            self.contatoSelecionado = [self.dao buscaContatoDaPosicao:index.row];
+            _gerenciador = [[GerenciadorDeAcoes alloc] initWithContato:self.contatoSelecionado];
+            [self.gerenciador acoesDoController:self];
+        }
+    }
+}
+
 
 @end
