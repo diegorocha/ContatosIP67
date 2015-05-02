@@ -20,8 +20,7 @@
         UIImage *imageTabItem = [UIImage imageNamed:@"mapa-contatos.png"];
         UITabBarItem *tabItem = [[UITabBarItem alloc] initWithTitle:@"Mapa" image:imageTabItem tag:0];
         self.tabBarItem = tabItem;
-        
-        self.navigationItem.title = @"Contatos";
+        self.navigationItem.title = @"Localização";
     }
     return self;
 }
