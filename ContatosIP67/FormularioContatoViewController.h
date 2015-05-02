@@ -22,6 +22,8 @@
 @property IBOutlet UITextField *telefone;
 @property IBOutlet UITextField *email;
 @property IBOutlet UITextField *endereco;
+@property IBOutlet UITextField *lat;
+@property IBOutlet UITextField *lng;
 @property IBOutlet UITextField *site;
 @property IBOutlet UIButton *botaoFoto;
 
@@ -31,6 +33,7 @@
 @property(weak) id<FormularioContatoViewControllerDelegate> delegate;
 
 -(IBAction)selecionaFoto:(id)sender;
+-(IBAction)buscarCoordenadas:(id)sender;
 
 @end
 

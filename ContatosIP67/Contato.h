@@ -15,6 +15,8 @@
 @property(strong) NSString *telefone;
 @property(strong) NSString *email;
 @property(strong) NSString *endereco;
+@property(strong) NSNumber *lat;
+@property(strong) NSNumber *lng;
 @property(strong) NSString *site;
 @property (strong) UIImage *foto;
 

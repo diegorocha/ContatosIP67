@@ -9,6 +9,7 @@
 #import "FormularioContatoViewController.h"
 #import "Contato.h"
 #import "ContatoDAO.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface FormularioContatoViewController ()
 
@@ -47,6 +48,9 @@
     self.contato.endereco = endereco;
     self.contato.site = site;
     
+    self.contato.lat = [NSNumber numberWithFloat:[self.lat.text floatValue]];
+    self.contato.lng = [NSNumber numberWithFloat:[self.lat.text floatValue]];
+    
     UIImage *backgroundBotao = [self.botaoFoto backgroundImageForState:UIControlStateNormal];
     if(backgroundBotao){
         self.contato.foto = backgroundBotao;
@@ -82,6 +86,8 @@
         self.telefone.text = self.contato.telefone;
         self.email.text = self.contato.email;
         self.endereco.text = self.contato.endereco;
+        self.lat.text = [self.contato.lat stringValue];
+        self.lng.text = [self.contato.lng stringValue];
         self.site.text = self.contato.site;
         if(self.contato.foto){
             [self.botaoFoto setBackgroundImage:self.contato.foto forState:UIControlStateNormal];
@@ -107,6 +113,16 @@
     [self.botaoFoto setBackgroundImage:imagemSelecionada forState:UIControlStateNormal];
     [self.botaoFoto setTitle:nil forState:UIControlStateNormal];
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(IBAction)buscarCoordenadas:(id)sender{
+    CLGeocoder *geocoder = [CLGeocoder new];
+    [geocoder geocodeAddressString:self.endereco.text completionHandler:^(NSArray *resultados, NSError *error) {
+        CLPlacemark *resultado = resultados[0];
+        CLLocationCoordinate2D coordenada = resultado.location.coordinate;
+        self.lat.text = [NSString stringWithFormat:@"%f", coordenada.latitude];
+        self.lng.text = [NSString stringWithFormat:@"%f", coordenada.longitude];
+    }];
 }
 
 @end
