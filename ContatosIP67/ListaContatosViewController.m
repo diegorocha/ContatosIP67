@@ -16,6 +16,10 @@
 - (id)init {
     self = [super init];
     if(self){
+        UIImage *imageTabItem = [UIImage imageNamed:@"lista-contatos.png"];
+        UITabBarItem *tabItem = [[UITabBarItem alloc] initWithTitle:@"Contatos" image:imageTabItem tag:0];
+        self.tabBarItem = tabItem;
+        
         self.navigationItem.title = @"Contatos";
         self.linhaDestaque = -1;
         
