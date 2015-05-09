@@ -49,7 +49,7 @@
     self.contato.site = site;
     
     self.contato.lat = [NSNumber numberWithFloat:[self.lat.text floatValue]];
-    self.contato.lng = [NSNumber numberWithFloat:[self.lat.text floatValue]];
+    self.contato.lng = [NSNumber numberWithFloat:[self.lng.text floatValue]];
     
     UIImage *backgroundBotao = [self.botaoFoto backgroundImageForState:UIControlStateNormal];
     if(backgroundBotao){

@@ -14,8 +14,8 @@
 
 @interface ListaContatosViewController : UITableViewController<FormularioContatoViewControllerDelegate>
 
-@property  ContatoDAO *dao;
-@property Contato *contatoSelecionado;
+@property(strong)  ContatoDAO *dao;
+@property(strong) Contato *contatoSelecionado;
 @property NSInteger linhaDestaque;
 @property(readonly) GerenciadorDeAcoes *gerenciador;
 
