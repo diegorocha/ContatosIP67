@@ -18,6 +18,7 @@ static ContatoDAO *defaultDao = nil;
     if(self){
         _contatos = [NSMutableArray new];
         [self inserirDadosIniciais];
+        [self carregarContatos];
     }
     return self;
 }
@@ -45,17 +46,25 @@ static ContatoDAO *defaultDao = nil;
     [self.contatos removeObjectAtIndex:posicao];
 }
 
+- (void) carregarContatos {
+    NSFetchRequest *buscaContatos = [NSFetchRequest fetchRequestWithEntityName:@"Contato"];
+    NSSortDescriptor *ordenarPorNome = [NSSortDescriptor sortDescriptorWithKey:@"nome" ascending:YES];
+    buscaContatos.sortDescriptors = @[ordenarPorNome];
+    NSArray *contatosImutaveis = [self.managedObjectContext executeFetchRequest:buscaContatos error:nil];
+    _contatos = [contatosImutaveis mutableCopy];
+}
+
 - (void) inserirDadosIniciais {
     NSUserDefaults *configuracoes = [NSUserDefaults standardUserDefaults];
     BOOL dadosInseridos = [configuracoes boolForKey:@"dados_inseridos"];
     if(!dadosInseridos){
         Contato *caelumSP = [NSEntityDescription insertNewObjectForEntityForName:@"Contato" inManagedObjectContext:self.managedObjectContext];
-        caelumSP.nome = @"Caelum Unidade São Paulo";
+        caelumSP.nome = @"Diego Rocha";
         caelumSP.email = @"diego@diegorocha.com.br";
-        caelumSP.telefone = @"0115512751";
-        caelumSP.site = @"http://www.caelum.com.br";
-        caelumSP.lat = [NSNumber numberWithDouble:23.5883034];
-        caelumSP.lng = [NSNumber numberWithDouble:46.632369];
+        caelumSP.telefone = @"21998406540";
+        caelumSP.site = @"http://diego@diegorocha.com.br";
+        caelumSP.lat = [NSNumber numberWithDouble:-22.8950148];
+        caelumSP.lng = [NSNumber numberWithDouble:-43.3542673];
         
         [self saveContext];
         [configuracoes setBool:YES forKey:@"dados_inseridos"];
