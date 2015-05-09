@@ -39,7 +39,7 @@
     NSString *site = [self.site text];
     
     if(!self.contato){
-        self.contato = [Contato new];
+        self.contato = [self.dao novoContato];
     }
     
     self.contato.nome = nome;

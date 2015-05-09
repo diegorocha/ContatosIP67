@@ -43,7 +43,10 @@ static ContatoDAO *defaultDao = nil;
 }
 
 - (void)removeContatoDaPosicao: (NSInteger)posicao {
+    Contato *c = [self buscaContatoDaPosicao:posicao];
+    [self.managedObjectContext deleteObject:c];
     [self.contatos removeObjectAtIndex:posicao];
+    [self saveContext];
 }
 
 - (void) carregarContatos {
@@ -58,18 +61,23 @@ static ContatoDAO *defaultDao = nil;
     NSUserDefaults *configuracoes = [NSUserDefaults standardUserDefaults];
     BOOL dadosInseridos = [configuracoes boolForKey:@"dados_inseridos"];
     if(!dadosInseridos){
-        Contato *caelumSP = [NSEntityDescription insertNewObjectForEntityForName:@"Contato" inManagedObjectContext:self.managedObjectContext];
-        caelumSP.nome = @"Diego Rocha";
-        caelumSP.email = @"diego@diegorocha.com.br";
-        caelumSP.telefone = @"21998406540";
-        caelumSP.site = @"http://diego@diegorocha.com.br";
-        caelumSP.lat = [NSNumber numberWithDouble:-22.8950148];
-        caelumSP.lng = [NSNumber numberWithDouble:-43.3542673];
+        Contato *contatoInicial = [NSEntityDescription insertNewObjectForEntityForName:@"Contato" inManagedObjectContext:self.managedObjectContext];
+        contatoInicial.nome = @"Diego Rocha";
+        contatoInicial.email = @"diego@diegorocha.com.br";
+        contatoInicial.telefone = @"21998406540";
+        contatoInicial.endereco = @"Rua Baronesa 175, Rio de Janeiro";
+        contatoInicial.site = @"http://diego@diegorocha.com.br";
+        contatoInicial.lat = [NSNumber numberWithDouble:-22.8950148];
+        contatoInicial.lng = [NSNumber numberWithDouble:-43.3542673];
         
         [self saveContext];
         [configuracoes setBool:YES forKey:@"dados_inseridos"];
         [configuracoes synchronize];
     }
+}
+
+-(Contato *) novoContato {
+    return [NSEntityDescription insertNewObjectForEntityForName:@"Contato" inManagedObjectContext:self.managedObjectContext];
 }
 
 @synthesize managedObjectContext = _managedObjectContext;
