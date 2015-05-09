@@ -17,6 +17,7 @@ static ContatoDAO *defaultDao = nil;
     self = [super init];
     if(self){
         _contatos = [NSMutableArray new];
+        [self inserirDadosIniciais];
     }
     return self;
 }
@@ -42,6 +43,24 @@ static ContatoDAO *defaultDao = nil;
 
 - (void)removeContatoDaPosicao: (NSInteger)posicao {
     [self.contatos removeObjectAtIndex:posicao];
+}
+
+- (void) inserirDadosIniciais {
+    NSUserDefaults *configuracoes = [NSUserDefaults standardUserDefaults];
+    BOOL dadosInseridos = [configuracoes boolForKey:@"dados_inseridos"];
+    if(!dadosInseridos){
+        Contato *caelumSP = [NSEntityDescription insertNewObjectForEntityForName:@"Contato" inManagedObjectContext:self.managedObjectContext];
+        caelumSP.nome = @"Caelum Unidade São Paulo";
+        caelumSP.email = @"diego@diegorocha.com.br";
+        caelumSP.telefone = @"0115512751";
+        caelumSP.site = @"http://www.caelum.com.br";
+        caelumSP.lat = [NSNumber numberWithDouble:23.5883034];
+        caelumSP.lng = [NSNumber numberWithDouble:46.632369];
+        
+        [self saveContext];
+        [configuracoes setBool:YES forKey:@"dados_inseridos"];
+        [configuracoes synchronize];
+    }
 }
 
 @synthesize managedObjectContext = _managedObjectContext;
