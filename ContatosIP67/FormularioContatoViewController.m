@@ -115,14 +115,26 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
--(IBAction)buscarCoordenadas:(id)sender{
+-(IBAction)buscarCoordenadas:(UIButton *)botao{
+    [self.loading startAnimating];
+    botao.hidden = YES;
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:self.endereco.text completionHandler:^(NSArray *resultados, NSError *error) {
-        CLPlacemark *resultado = resultados[0];
-        CLLocationCoordinate2D coordenada = resultado.location.coordinate;
-        self.lat.text = [NSString stringWithFormat:@"%f", coordenada.latitude];
-        self.lng.text = [NSString stringWithFormat:@"%f", coordenada.longitude];
+        if(error == nil && [resultados count] > 0){
+            CLPlacemark *resultado = resultados[0];
+            CLLocationCoordinate2D coordenada = resultado.location.coordinate;
+            self.lat.text = [NSString stringWithFormat:@"%f", coordenada.latitude];
+            self.lng.text = [NSString stringWithFormat:@"%f", coordenada.longitude];
+        }else{
+            [self exibeAlertViewWithTitle: @"Oops!" andMessage: [NSString stringWithFormat: @"Não foi possível localizar o endereço: %@", error]];
+        }
+        [self.loading stopAnimating];
+        botao.hidden = NO;
     }];
+}
+
+-(void)exibeAlertViewWithTitle: (NSString *)title andMessage: (NSString *)message {
+    [[[UIAlertView alloc] initWithTitle: title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
 }
 
 @end

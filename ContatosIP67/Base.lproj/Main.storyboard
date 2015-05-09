@@ -96,8 +96,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="749-Lt-Ejo">
+                                <rect key="frame" x="100" y="190" width="214" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9y-08-hrT">
-                                <rect key="frame" x="328" y="207" width="31" height="32"/>
+                                <rect key="frame" x="328" y="213" width="31" height="32"/>
                                 <state key="normal" backgroundImage="gps">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -105,11 +110,9 @@
                                     <action selector="buscarCoordenadas:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ow2-gb-wFa"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="749-Lt-Ejo">
-                                <rect key="frame" x="100" y="190" width="214" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                            </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Mw6-JJ-aWL">
+                                <rect key="frame" x="333" y="218" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -120,6 +123,7 @@
                         <outlet property="endereco" destination="69h-mc-KfS" id="lF6-m8-Kqe"/>
                         <outlet property="lat" destination="749-Lt-Ejo" id="flP-IT-Jha"/>
                         <outlet property="lng" destination="eog-na-qk2" id="FGZ-hy-YL7"/>
+                        <outlet property="loading" destination="Mw6-JJ-aWL" id="x7F-OO-BSy"/>
                         <outlet property="nome" destination="qEa-qC-uDZ" id="Me6-g1-66B"/>
                         <outlet property="site" destination="GgW-lB-bqM" id="zXy-C6-XLT"/>
                         <outlet property="telefone" destination="aTT-O8-NUe" id="SPq-hE-LTp"/>

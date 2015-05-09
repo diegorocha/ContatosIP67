@@ -26,6 +26,7 @@
 @property IBOutlet UITextField *lng;
 @property IBOutlet UITextField *site;
 @property IBOutlet UIButton *botaoFoto;
+@property(nonatomic, weak) IBOutlet UIActivityIndicatorView *loading;
 
 @property (strong) Contato *contato;
 
